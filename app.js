@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 //Bring in Models
 mongoose.connect('mongodb://localhost/mahadeva');
 let db = mongoose.connection;
-let getHoroscopes = require("./modal/horoscopes");
+let dbHoroscopes = require("./modal/horoscopes");
 let getSudos = require("./modal/getsudos");
 
 //Declarations for multiple use
@@ -31,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 
 app.get("/", function (req, res) {
-
   res.render('index', {
     title: ""
   });
@@ -46,7 +45,7 @@ app.get("/horoscopes", function (req, res) {
 
 app.get("/horoscopes/zodiac_sign/:sign", function(req, res) {
   console.log(req.params.sign);
-  getHoroscopes.findOne({horoscope: req.params.sign}, function(err, details) {
+  dbHoroscopes.findOne({horoscope: req.params.sign}, function(err, details) {
     if(err) {
       console.log(err);
       // need to render a something went wrong template with message
@@ -66,7 +65,7 @@ app.get("/sudo", function(req, res) {
       title: 'Mahadeva'
     });
 });
-app.post("/sudo-login", function(req, res) {
+app.post("/sudo/login", function(req, res) {
   console.log(req.body.email);
   // console.log(getSudos.findOne({name: 'Test'}));
   getSudos.findOne({email: 'sy@gmail.com' }, function(err, sudo) {
@@ -86,6 +85,32 @@ app.post("/sudo-login", function(req, res) {
   });
 })
 
+app.post("/sudo/horoscopes/add", (req, res) => {
+  var object = {
+    author: req.body.author,
+    horoscope: req.body.horoscope,
+    month: req.body.month,
+    year: req.body.year,
+    desc: req.body.description
+  }
+
+  let query = "monthly." + "year" + object.year + "." + object.month;
+  let obj = {};
+  obj[query] = object.desc;
+  console.log(obj);
+  dbHoroscopes.update({
+      horoscope:object.horoscope
+    },
+    {
+      $set: obj
+    }, {upsert: true}, (err, data) => {
+      if(err) {
+        res.send(err);
+      }
+      console.log(data);
+    });
+}); 
+
 app.listen(3002, function() {
-  console.log("Server started on port 3000");
+  console.log("Server started on port 3002");
 });

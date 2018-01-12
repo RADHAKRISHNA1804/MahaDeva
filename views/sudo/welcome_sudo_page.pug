@@ -18,32 +18,33 @@ block content
   div
     h4 You can add/update information to the database.
     br
-    form
+    form.form-signin(name="formUpdateHoroscope" method="post", action="/sudo/horoscopes/add" onsubmit="return test()" role="form" data-toggle="validator")
       .form-group
-        label(for='formControlInput1') Email address
-        input#formControlInput1.form-control(type='email' value=sudo.email disabled)
+        label(for='formControlInput1') Author
+        input#formControlInput1.form-control(type='text' name="name" value=sudo.name disabled)
+        input(type="hidden" name="author" value=sudo.name)
       .form-group
         label(for='formControlYear') Select Horoscope
-        select#formControlYear.form-control
-          option(val='') Select a Horoscope
+        select#formControlYear.form-control(name="horoscope")
+          option(value='') Select a Horoscope
           each sign, i in list
             option #{sign}
       .form-group
         label(for='formControlMonth') Select Month
-        select#formControlMonth.form-control
-          option(val='') Select a Month
+        select#formControlMonth.form-control(name="month")
+          option(value='') Select a Month
           each month, i in months
-            option(val='month') #{month}
+            option #{month}
       .form-group
         label(for='#yearpicker') Select Year
         div#yearpicker.input-group.date
-          input.form-control(type='year')
+          input.form-control(type='year' name="year" required)
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
           
       .form-group
         label(for='exampleFormControlTextarea1') Description
-        textarea#exampleFormControlTextarea1.form-control(rows='3')
-    button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
+        textarea#exampleFormControlTextarea1.form-control(rows='3' name="description" required)
+      input.form-control(type='submit', value="Submit")
        
   
