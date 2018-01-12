@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  include nav.pug
+  div.content
+    div.zodiac-info
+      h3 #{details.horoscope}
+      div.img
+        img(src="/imgs/" + details.horoscope + ".png")
+      div.details #{details.monthly.year2018['jan-18']}  

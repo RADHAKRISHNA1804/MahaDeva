@@ -1,0 +1,49 @@
+extends sudo_layout
+
+block content
+  h2 Welcome #{sudo.name}
+  br
+  br
+  
+  div.dropdown
+    button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+      | Horoscopes &nbsp;
+      span.caret
+    ul.dropdown-menu
+      li
+        a(href='#') Monthly
+      li
+        a(href='#') Yearly
+  hr      
+  div
+    h4 You can add/update information to the database.
+    br
+    form
+      .form-group
+        label(for='formControlInput1') Email address
+        input#formControlInput1.form-control(type='email' value=sudo.email disabled)
+      .form-group
+        label(for='formControlYear') Select Horoscope
+        select#formControlYear.form-control
+          option(val='') Select a Horoscope
+          each sign, i in list
+            option #{sign}
+      .form-group
+        label(for='formControlMonth') Select Month
+        select#formControlMonth.form-control
+          option(val='') Select a Month
+          each month, i in months
+            option(val='month') #{month}
+      .form-group
+        label(for='#yearpicker') Select Year
+        div#yearpicker.input-group.date
+          input.form-control(type='year')
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+          
+      .form-group
+        label(for='exampleFormControlTextarea1') Description
+        textarea#exampleFormControlTextarea1.form-control(rows='3')
+    button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
+       
+  

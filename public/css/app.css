@@ -1,0 +1,158 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+  color: #c8c8c8;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("../imgs/banner-2.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* Index styles */
+
+.welcome {
+  margin: 87px auto;
+  width: 960px;
+  text-align: center;
+}
+.welcome h1 {
+  font-size: 100px;
+  text-shadow: 2px 2px #333;
+}
+
+.welcome p {
+  font-size: 19px;
+  margin: 10px 0px;
+  line-height: 31px;
+}
+
+nav.home-nav {
+}
+
+nav.home-nav > ul {
+  list-style-type: none;
+}
+
+nav.home-nav > ul li {
+  display: inline-block;
+  margin: 10px;
+  font-size: 15px;
+  float: left;
+}
+
+nav.home-nav > ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+nav.home-nav > ul li a:hover {
+  color: #fff;
+}
+
+
+/* Menu & Content styles */
+
+header {
+  width: 20%;
+  float: left;
+}
+
+.logo {
+  margin: 20px;
+}
+
+nav.main-nav {
+  margin: 62px 10px;
+}
+
+nav.main-nav > ul {
+  list-style-type: none;
+}
+
+nav.main-nav > ul li {
+  display: block;
+  margin: 20px 10px;
+  font-size: 20px;
+}
+
+nav.main-nav > ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+nav.main-nav > ul li a:hover {
+  color: #fff;
+}
+
+div.content {
+  width: 80%;
+  float: left;
+  padding-top: 122px;
+}
+
+/* Horoscopes list */
+
+.zodiacs img {
+  width: 150px;
+  height: 150px;
+}
+
+
+/*  zodiac info */
+
+.zodiac-info {
+  width: 100%;
+}
+
+.zodiac-info img{
+  width: 200px;
+  height: 200px;
+}
+
+.zodiac-info .img {
+  float: left;
+  margin: 20px 0px;
+  width: 17%;
+}
+.zodiac-info .details {
+  float: left;
+  margin: 20px 0px;
+  padding: 0px 60px;
+  width: 83%;
+  line-height: 28px;
+}
+
+.zodiac-info::after {
+  clear: float
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}

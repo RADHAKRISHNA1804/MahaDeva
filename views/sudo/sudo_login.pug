@@ -1,0 +1,14 @@
+extends sudo_layout
+
+block content
+  form.form-signin(method="post", action="/sudo-login")
+    h2.form-signin-heading Super User Login
+    label.sr-only(for='inputEmail') Email address
+    input#inputEmail.form-control(type='email', name="email" placeholder='Email address', required='', autofocus='')
+    label.sr-only(for='inputPassword') Password, 
+    input#inputPassword.form-control(type='password',name="password" placeholder='Password', required='')
+    .checkbox
+      label
+        input(type='checkbox', value='remember-me')
+        |  Remember me
+    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
