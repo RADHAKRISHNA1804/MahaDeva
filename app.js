@@ -68,7 +68,7 @@ app.get("/sudo", function(req, res) {
 app.post("/sudo/login", function(req, res) {
   console.log(req.body.email);
   // console.log(getSudos.findOne({name: 'Test'}));
-  getSudos.findOne({email: 'sy@gmail.com' }, function(err, sudo) {
+  getSudos.findOne({email: req.body.email }, function(err, sudo) {
     if(err) {
       console.log(err);
     } else {
@@ -109,7 +109,7 @@ app.post("/sudo/horoscopes/add", (req, res) => {
       }
       console.log(data);
     });
-}); 
+});
 
 app.listen(3002, function() {
   console.log("Server started on port 3002");
